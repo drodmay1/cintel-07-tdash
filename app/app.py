@@ -1,9 +1,11 @@
 import seaborn as sns
 from faicons import icon_svg
 
-from shiny import reactive
+from shiny import reactive, App
 from shiny.express import input, render, ui
-import palmerpenguins 
+import palmerpenguins
+from icons import piggy_bank
+
 
 df = palmerpenguins.load_penguins()
 
@@ -49,8 +51,9 @@ with ui.sidebar(title="Filter controls"):
 
 
 with ui.layout_column_wrap(fill=False):
-    with ui.value_box(showcase=icon_svg("earlybirds")):
-        "Number of penguins"
+    with ui.value_box(showcase=icon_svg("dollar-sign"), style='font-family: Arial, sans-serif; background-color: #333333; color: #f0f0f0'):
+        "Number of Penguins"
+
 
         @render.text
         def count():
