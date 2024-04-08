@@ -4,7 +4,6 @@ from faicons import icon_svg
 from shiny import reactive, App
 from shiny.express import input, render, ui
 import palmerpenguins
-from icons import piggy_bank
 
 
 df = palmerpenguins.load_penguins()
