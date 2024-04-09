@@ -50,22 +50,21 @@ with ui.sidebar(title="Filter controls"):
 
 
 with ui.layout_column_wrap(fill=False):
-    with ui.value_box(showcase=icon_svg("dollar-sign"), style='font-family: Arial, sans-serif; background-color: #333333; color: #f0f0f0'):
-        "Number of Penguins"
-
+    with ui.value_box(showcase=icon_svg("earlybirds"), style="font-family: Courier, monospace; font-weight: bold; color: white; background-color: darkgray;"):
+        ("Number of penguins")
 
         @render.text
         def count():
             return filtered_df().shape[0]
 
-    with ui.value_box(showcase=icon_svg("ruler-horizontal")):
+    with ui.value_box(showcase=icon_svg("ruler-horizontal"), style="font-family: Courier, monospace; font-weight: bold; color: white; background-color: darkgray;"):
         "Average bill length"
 
         @render.text
         def bill_length():
             return f"{filtered_df()['bill_length_mm'].mean():.1f} mm"
 
-    with ui.value_box(showcase=icon_svg("ruler-vertical")):
+    with ui.value_box(showcase=icon_svg("ruler-vertical"), style="font-family: Courier, monospace; font-weight: bold; color: white; background-color: darkgray;"):
         "Average bill depth"
 
         @render.text
