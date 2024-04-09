@@ -1,16 +1,17 @@
-import seaborn as sns
-from faicons import icon_svg
+import seaborn as sns #I mporting seaborn for data visualization
+from faicons import icon_svg # Importing icon_svg function for displaying icons
 
-from shiny import reactive, App
-from shiny.express import input, render, ui
-import palmerpenguins
+from shiny import reactive, App # Importing Shiny for Python
+from shiny.express import input, render, ui # Importing specific components from Shiny and Shiny Express
+import palmerpenguins # Importing the palmerpenguins dataset
 
-
+# Loading the penguins dataset
 df = palmerpenguins.load_penguins()
 
+# Setting up page options with a title and fillable option
 ui.page_opts(title="Penguins dashboard 🐦🐦", fillable=True)
 
-
+# Creating a sidebar for filter controls
 with ui.sidebar(title="Filter controls", style="font-family: courier, monospace;"):
     ui.input_slider("mass", "Mass", 2000, 6000, 6000)
     ui.input_checkbox_group(
@@ -19,6 +20,8 @@ with ui.sidebar(title="Filter controls", style="font-family: courier, monospace;
         ["Adelie", "Gentoo", "Chinstrap"],
         selected=["Adelie", "Gentoo", "Chinstrap"],
     )
+
+     # Adding horizontal rule and links section with relevant URLs
     ui.hr()
     ui.h6("Links")
     ui.a(
@@ -48,7 +51,7 @@ with ui.sidebar(title="Filter controls", style="font-family: courier, monospace;
         target="_blank",
     )
 
-
+# Creating layout columns for displaying penguin statistics
 with ui.layout_column_wrap(fill=False):
     with ui.value_box(showcase=icon_svg("earlybirds"), style="font-family: Courier, monospace; font-weight: bold; color: white; background-color: darkgray;"):
         ("Number of penguins")
@@ -56,7 +59,8 @@ with ui.layout_column_wrap(fill=False):
         @render.text
         def count():
             return filtered_df().shape[0]
-
+        
+    # Value box to display average bill length
     with ui.value_box(showcase=icon_svg("ruler-horizontal"), style="font-family: Courier, monospace; font-weight: bold; color: white; background-color: darkgray;"):
         "Average bill length"
 
@@ -64,6 +68,7 @@ with ui.layout_column_wrap(fill=False):
         def bill_length():
             return f"{filtered_df()['bill_length_mm'].mean():.1f} mm"
 
+    # Value box to display average bill depth
     with ui.value_box(showcase=icon_svg("ruler-vertical"), style="font-family: Courier, monospace; font-weight: bold; color: white; background-color: darkgray;"):
         "Average bill depth"
 
@@ -72,6 +77,7 @@ with ui.layout_column_wrap(fill=False):
             return f"{filtered_df()['bill_depth_mm'].mean():.1f} mm"
 
 
+# Creating layout columns for displaying plots and data frames
 with ui.layout_columns(style="font-family: Courier, monospace;"):
     with ui.card(full_screen=True):
         ui.card_header("Bill length and depth 📏")
@@ -85,6 +91,7 @@ with ui.layout_columns(style="font-family: Courier, monospace;"):
                 hue="species",
             )
 
+    # Card to display summary statistics of penguin data
     with ui.card(full_screen=True):
         ui.card_header("Penguin Data 🐦")
 
@@ -103,6 +110,7 @@ with ui.layout_columns(style="font-family: Courier, monospace;"):
 #ui.include_css(app_dir / "styles.css")
 
 
+# Function to calculate filtered dataframe based on input values
 @reactive.calc
 def filtered_df():
     filt_df = df[df["species"].isin(input.species())]
