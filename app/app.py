@@ -1,4 +1,4 @@
-import seaborn as sns #I mporting seaborn for data visualization
+import seaborn as sns #Importing seaborn for data visualization
 from faicons import icon_svg # Importing icon_svg function for displaying icons
 
 from shiny import reactive, App # Importing Shiny for Python
