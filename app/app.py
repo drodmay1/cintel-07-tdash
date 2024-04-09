@@ -72,7 +72,7 @@ with ui.layout_column_wrap(fill=False):
             return f"{filtered_df()['bill_depth_mm'].mean():.1f} mm"
 
 
-with ui.layout_columns():
+with ui.layout_columns(style="font-family: Courier, monospace;"):
     with ui.card(full_screen=True):
         ui.card_header("Bill length and depth")
 
