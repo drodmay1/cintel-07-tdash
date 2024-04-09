@@ -8,7 +8,7 @@ import palmerpenguins
 
 df = palmerpenguins.load_penguins()
 
-ui.page_opts(title="Penguins dashboard", fillable=True)
+ui.page_opts(title="Penguins dashboard 🐦🐦", fillable=True)
 
 
 with ui.sidebar(title="Filter controls", style="font-family: courier, monospace;"):
@@ -74,7 +74,7 @@ with ui.layout_column_wrap(fill=False):
 
 with ui.layout_columns(style="font-family: Courier, monospace;"):
     with ui.card(full_screen=True):
-        ui.card_header("Bill length and depth")
+        ui.card_header("Bill length and depth 📏")
 
         @render.plot
         def length_depth():
@@ -86,7 +86,7 @@ with ui.layout_columns(style="font-family: Courier, monospace;"):
             )
 
     with ui.card(full_screen=True):
-        ui.card_header("Penguin Data")
+        ui.card_header("Penguin Data 🐦")
 
         @render.data_frame
         def summary_statistics():
