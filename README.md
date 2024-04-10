@@ -1,4 +1,6 @@
 # PyShiny Basic Dashboard (Penguins)
+## Open pyshiny app in vscode
+shiny run --reload --launch-browser app/app.py
 
 ## Tools
 

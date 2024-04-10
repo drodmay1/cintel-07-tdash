@@ -1,9 +1,9 @@
-import seaborn as sns #Importing seaborn for data visualization
 from faicons import icon_svg # Importing icon_svg function for displaying icons
-
 from shiny import reactive, App # Importing Shiny for Python
 from shiny.express import input, render, ui # Importing specific components from Shiny and Shiny Express
 import palmerpenguins # Importing the palmerpenguins dataset
+from shinywidgets import render_plotly
+import plotly.express as px #Importing for data visualization
 
 # Loading the penguins dataset
 df = palmerpenguins.load_penguins()
@@ -82,13 +82,13 @@ with ui.layout_columns(style="font-family: Courier, monospace;"):
     with ui.card(full_screen=True):
         ui.card_header("Bill length and depth 📏")
 
-        @render.plot
+        @render_plotly
         def length_depth():
-            return sns.scatterplot(
-                data=filtered_df(),
+            return px.histogram(
+                data_frame=filtered_df(),
                 x="bill_length_mm",
                 y="bill_depth_mm",
-                hue="species",
+                color="species",
             )
 
     # Card to display summary statistics of penguin data
