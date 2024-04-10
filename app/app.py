@@ -9,7 +9,7 @@ import plotly.express as px #Importing for data visualization
 df = palmerpenguins.load_penguins()
 
 # Setting up page options with a title and fillable option
-ui.page_opts(title="Penguins dashboard 🐦🐦", fillable=True)
+ui.page_opts(title="David Rm P7 Dashboard 🐦🐦", fillable=True)
 
 # Creating a sidebar for filter controls
 with ui.sidebar(title="Filter controls", style="font-family: courier, monospace;"):
