@@ -5,6 +5,7 @@ import palmerpenguins # Importing the palmerpenguins dataset
 from shinywidgets import render_plotly
 import plotly.express as px #Importing for data visualization
 
+
 # Loading the penguins dataset
 df = palmerpenguins.load_penguins()
 
@@ -80,10 +81,10 @@ with ui.layout_column_wrap(fill=False):
 # Creating layout columns for displaying plots and data frames
 with ui.layout_columns(style="font-family: Courier, monospace;"):
     with ui.card(full_screen=True):
-        ui.card_header("Bill length and depth 📏")
+        ui.card_header("Plotly Chart 📊🐦 ")
 
         @render_plotly
-        def length_depth():
+        def length_depth_plotly():
             return px.histogram(
                 data_frame=filtered_df(),
                 x="bill_length_mm",
@@ -93,7 +94,7 @@ with ui.layout_columns(style="font-family: Courier, monospace;"):
 
     # Card to display summary statistics of penguin data
     with ui.card(full_screen=True):
-        ui.card_header("Penguin Data 🐦")
+        ui.card_header("Penguin Data 📚🐦")
 
         @render.data_frame
         def summary_statistics():
